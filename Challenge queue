@@ -1,0 +1,58 @@
+class Queue{
+    constructor(){
+        this.queue = [];
+    }
+
+    enqueue(element){
+        this.queue.push(element);
+        return this.queue;
+    }
+    dequeue(){
+        return this.queue.shift();
+    }
+    peek(){
+        return this.queue[0];
+    }
+    size(){
+        return this.queue.length;
+    }
+    isEmpty(){
+        return this.queue.length === 0;
+    }
+    print(){
+        return console.log(this.queue);
+    }
+}
+
+class Person{
+    constructor(name, arrivedTime){
+        this.name = name;
+        this.arrivedTime = arrivedTime;
+    }
+}
+
+const cola = new Queue();
+
+const person1 = new Person("Persona 1", new Date("2024-02-28T08:30:00"));
+const person2 = new Person("Persona 2", new Date("2024-02-28T09:15:00"));
+const person3 = new Person("Persona 3", new Date("2024-02-28T10:00:00"));
+const person4 = new Person("Persona 4", new Date("2024-02-28T10:45:00"));
+const person5 = new Person("Persona 5", new Date("2024-02-28T11:30:00"));
+
+//ISEMPTY
+console.log(cola.isEmpty());
+
+//ENQUEUE
+cola.enqueue(person1);
+cola.enqueue(person2);
+cola.enqueue(person3);
+cola.enqueue(person4);
+cola.enqueue(person5);
+//PRINT
+cola.print();
+//PEEk
+console.log(cola.peek());
+//DEQUEUE
+console.log(cola.dequeue());
+//SIZE
+console.log(cola.size());
