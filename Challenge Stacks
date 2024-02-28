@@ -1,0 +1,57 @@
+class Stack{
+    constructor(){
+        this.Stack= [];
+    }
+    push(element){
+        this.Stack.push(element);
+        return this.Stack;
+    }
+    pop(){
+        return this.Stack.pop();
+    }
+    peek(){
+        return this.Stack[this.Stack.length-1];
+    }
+    size(){
+        return this.Stack.length;
+    }
+    print(){
+        console.log(this.Stack);
+    }
+}
+
+class Book{
+    constructor(name, ISBN,Author,Editorial){
+        this.name = name;
+        this.ISBN = ISBN;
+        this.author = Author;
+        this.editorial = Editorial;
+    }
+}
+
+const prueba = new Stack()
+const book1 = new Book("El nombre del viento", "9788401337509", "Patrick Rothfuss", "Penguin Random House Grupo Editorial");
+const book2 = new Book("Cien años de soledad", "9780307474728", "Gabriel García Márquez", "Vintage Español");
+const book3 = new Book("Harry Potter y la piedra filosofal", "9788478884451", "J.K. Rowling", "Salamandra");
+const book4 = new Book("1984", "9788420674219", "George Orwell", "Penguin Random House Grupo Editorial");
+const book5 = new Book("Don Quijote de la Mancha", "9788424118310", "Miguel de Cervantes", "Espasa-Calpe");
+
+//PUSH
+
+prueba.push(book1);
+prueba.push(book2);
+prueba.push(book3);
+prueba.push(book4);
+prueba.push(book5);
+
+//PRINT
+prueba.print();
+
+//SIZE
+prueba.size();
+
+//Peek
+console.log(prueba.peek());
+
+//POP
+prueba.pop();
