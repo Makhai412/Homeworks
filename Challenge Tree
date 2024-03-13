@@ -1,0 +1,124 @@
+class Node{
+    constructor(value){
+        this.value = value;
+        this.children =[];
+    }
+    ifLeaf(){
+        if(this.children.length ===0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+class NaryTree{
+    constructor(){
+        this.root = null;
+    }
+    search(value, node = this.root){
+        if(!this.root){
+            return null;
+        }
+        if(this.root.value === value){
+            return this.root;
+        }else{
+            const children = node.children;
+            const inChildren = children.find(item => item.value === value);
+
+            if(inChildren){
+                return inChildren;
+            }else{
+                let hasChild;
+                children.forEach(item =>{
+                    if (hasChild){
+                        return;
+                    }
+                    hasChild = this.search(value, item);
+                })
+            }
+        }
+    }
+    insert(value, parent){
+        const newNode = new Node (value);
+
+        if(!parent){
+            if(!this.root){
+                this.root = newNode;
+            }else{
+                return null;
+            }
+        }else{
+            const parenNode = this.search(parent);
+            parenNode.children.push(newNode);
+        }
+    }
+
+    preOrder(node = this.root){
+        if(!node){
+            return;
+        }
+        console.log(node.value, node.children);
+        node.children.forEach( x =>{
+            this.preOrder(x);
+        });
+    }
+
+    postOrder(node = this.root){
+        if(!node){
+            return;
+        }
+        node.children.forEach( x =>{
+            this.postOrder(x);
+        });
+        console.log(node.value);
+    }
+
+    inOrder(node = this.root){
+        if(!node){
+            return;
+        }
+        if(node.children.length === 0){
+            console.log(node.value)
+        }else{
+            this.inOrder(node.children[0]);
+            console.log(node.value);
+
+            for (let i=1; i< node.children.length; i++){
+                this.inOrder(node.children[i]);
+            }
+        }
+    }
+}
+
+class Person{
+    constructor(name,birthday){
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+}
+const arbol = new NaryTree();
+const person1 = new Person("Maria Libia Jimenez Jaramillo","12-04-1952");
+const person2 = new Person("Hector Fabio Lozano Jimenez","12-06-1978");
+const person3 = new Person("Martha Cecilia Lozano Jimenez","2-09-1976");
+const person4 = new Person("Gloria Patricia Lozano Jimenez","25-07-1974");
+const person5 = new Person("Hector Stiven Lozano Barona","11-12-2001");
+const person6 = new Person("Andres Higuera Lozano","12-04-2005");
+const person7 = new Person("Juliana Higuera Lozano","15-04-2004");
+
+arbol.insert(person1);
+arbol.insert(person2, person1);
+arbol.insert(person3, person1);
+arbol.insert(person4, person1);
+arbol.insert(person5, person2);
+arbol.insert(person6, person3);
+arbol.insert(person7, person3);
+
+console.log("InOrder:\n")
+arbol.inOrder();
+console.log("___________________________________________________")
+console.log("PostOrder:\n")
+arbol.postOrder();
+console.log("___________________________________________________")
+console.log("PreOrder:\n")
+arbol.preOrder();
