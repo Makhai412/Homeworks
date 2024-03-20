@@ -1,0 +1,72 @@
+class Person{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+}
+class City{
+    constructor(name){
+        this.name = name;
+    }
+}
+class Graph{
+    constructor(){
+        this.node= [];
+        this.adjList={};
+    }
+    addNode(node){
+        this.node.push(node)
+        this.adjList[node.name] = []
+    }
+    addEdge(node1,node2){
+        this.adjList[node1.name].push(node2);
+        this.adjList[node2.name].push(node1);
+        }
+
+    printGraph(){
+        console.log(this.adjList);
+    }
+
+    searchNode(value){
+        if(!this.node.length){
+            return ;
+        }
+        return this.node.find(x => x === value);
+    }
+
+    printAdjacency(value){
+        if(this.searchNode(value)){
+            console.log(this.adjList[value.name])
+        }else{
+            return;
+        }
+    }
+}
+
+const grafo = new Graph;
+const person1 = new Person("Ana", 30);
+const person2 = new Person("Carlos", 25);
+const person3 = new Person("Elena", 28);
+const person4 = new Person("Diego", 22);
+
+const city1 = new City("Cali");
+const city2 = new City("Manizales");
+const city3 = new City("Caldas");
+
+
+
+grafo.addNode(person1);
+grafo.addNode(person2);
+grafo.addNode(person3);
+grafo.addNode(person4);
+grafo.addNode(city1);
+grafo.addNode(city2);
+grafo.addNode(city3);
+
+grafo.addEdge(person1, city1);
+grafo.addEdge(person2, city2);
+grafo.addEdge(person3, city1);
+grafo.addEdge(person4, city3);
+
+console.log(grafo.searchNode(city1));
+grafo.printAdjacency(city1);
