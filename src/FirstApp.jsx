@@ -1,27 +1,19 @@
 import './App';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useCounter } from './hooks/customHook';
 
 
-const FirstApp = ({title, sum})=>{
-  const [counter, setCounter]= useState(sum);
-
-  const handleAdd =()=>{
-    setCounter(counter +1)
-  }
-  const handleSubstract= () =>{
-    setCounter(counter-1);
-  }
-  const handleReset = () =>{
-    setCounter(sum)
-  }
+const FirstApp = ({sum})=>{
+  
+  const {counter, valueAdd, valueDecrement, valueReset } = useCounter(sum);
     return(
     <>
     <h1>Counter</h1>
     <span>{counter}</span>
-    <button id="botonSumar" onClick={()=> handleAdd()}> +1 </button>
-    <button id="botonRestar" onClick={()=> handleSubstract()}> -1 </button>
-    <button id="botonResetear" onClick={()=> handleReset()}> Reset </button>
+    <button id="botonSumar" onClick={()=> valueAdd()}> +1 </button>
+    <button id="botonRestar" onClick={()=> valueDecrement()}> -1 </button>
+    <button id="botonResetear" onClick={()=> valueReset()}> Reset </button>
     </> 
     )
   

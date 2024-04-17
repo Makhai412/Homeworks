@@ -7,9 +7,11 @@ import { GifExpertApp } from './GitfExpertApp'
 
 //<App/>
 //<ComponentApp/>
+//<GifExpertApp/>
 ReactDOM.createRoot(document.getElementById('root')).render(
  
  <>
-  <GifExpertApp/>
+ <App/>
+  
 </>  
 )
