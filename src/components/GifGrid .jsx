@@ -4,25 +4,25 @@ import GifItem from './GifItem';
 
 
 export const GifGrid = ({category}) =>{
-    const [firstGif, setFirstGif] = useState(null);
+    const [gifs, setGifs] = useState([]);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        const gifsData = await getGifs(category);
-        
-          setFirstGif(gifsData[0]);
-        
-      };
+  useEffect(() => {
+    const fetchData = async () => {
+      const gifsData = await getGifs(category);
+      setGifs(gifsData);
+      console.log("List of Gifs:", gifsData); 
+    };
         fetchData();
         }, [category]);
     
     
     return(
         <>
-            <div className="category-title"> {category}</div>
-            
-                {firstGif && <GifItem gif={firstGif}/>}
-            </>
+            <div className="category-title">{category}</div> 
+            {gifs.map((gif) => (
+            <GifItem key={gif.id} gif={gif} />
+      ))}
+        </>
     );
 };
 
