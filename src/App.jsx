@@ -1,14 +1,13 @@
 
 import './App.css'
-import { Father } from './Components/Father'
-import { MultipleCustomHooks } from './Components/MultipleCustomHooks'
+import { TodoApp } from './Components/TodoApp'
 
 
 function App() {
   
   return (
     <>
-      <Father/>
+      <TodoApp/>
     </>
   )
 }
