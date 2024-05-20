@@ -1,17 +1,16 @@
-import { TodoItem } from "./todoItem"
+import { TodoItem } from './todoItem';
 
-export const List = ({todos = []}) => {
-  return (
-    <>
-      <ul className="list-group">
-      {todos.map((todo, key)=>{
-        return( 
-          <TodoItem key={key} todo={todo}/>
-            ) 
-          })
-        }  
-      </ul>
-    </>
-  )
-}
-
+export const List = ({ todos, onDeleteTodo, onToggleTodo }) => {
+    return (
+        <ul className="list-group">
+            {todos.map(todo => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onDeleteTodo={onDeleteTodo}
+                    onToggleTodo={onToggleTodo}
+                />
+            ))}
+        </ul>
+    );
+};

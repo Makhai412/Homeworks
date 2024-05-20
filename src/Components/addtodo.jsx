@@ -1,20 +1,22 @@
-
 import { useRef } from "react"
 
 export const Addtodo = ({handleNewTodo}) => {
   
+
   const valueInput= useRef();
   const onFormSubmit=(evt)=>{
+  const todoDescription = valueInput.current.value.trim();
     evt.preventDefault()
-    const newTodo={
-      id: new Date().getTime(),
-      description:valueInput.current.value,
-      done: false
-    }
+    if (todoDescription !== "") {
+      const newTodo = {
+        id: new Date().getTime(),
+        description: todoDescription,
+        done: false
+      };
     handleNewTodo(newTodo);
     valueInput.current.value="";
     
-        
+    }     
   }
   return (
     <form onSubmit={(evt)=> onFormSubmit(evt)}>
