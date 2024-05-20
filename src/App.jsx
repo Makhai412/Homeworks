@@ -1,12 +1,13 @@
 
 import './App.css'
-import UseFetch from './UseFetch'
+import { MultipleCustomHooks } from './Components/MultipleCustomHooks'
+
 
 function App() {
   
   return (
     <>
-      <UseFetch/>
+      <MultipleCustomHooks/>
     </>
   )
 }
