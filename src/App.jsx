@@ -1,13 +1,15 @@
-
 import './App.css'
-import { TodoApp } from './Components/TodoApp'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Rutas } from './Components/Rutas'
 
 
 function App() {
   
   return (
     <>
-      <TodoApp/>
+      <Router>
+        <Rutas />
+      </Router>
     </>
   )
 }

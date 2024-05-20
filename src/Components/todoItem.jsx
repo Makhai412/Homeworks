@@ -1,6 +1,6 @@
 export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
     return (
-        <li className='list-group-item d-flex justify-content-between'>
+        <li className='list-group-item flex justify-between items-center'>
             <span 
                 className={`align-self-center ${todo.done ? 'completed' : ''}`}
                 onClick={() => onToggleTodo(todo.id)}
